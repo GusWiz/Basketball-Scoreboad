@@ -21,9 +21,12 @@ function highlightScore(element1, element2) {
     if (homeNum > guestNum) {
         element1.style.border = "2px solid yellow"
         element2.style.border = "none"
-    } else {
+    } else if (homeNum < guestNum) {
         element2.style.border = "2px solid yellow"
         element1.style.border = "none"    
+    } else {
+        element1.style.border = "none"
+        element2.style.border = "none"
     }
 }
 
@@ -56,5 +59,13 @@ function guestBtn2() {
 function guestBtn3() {
     guestNum += 3
     updateScore(guestEl, guestNum)
+    highlightScore(homeEl, guestEl)
+}
+
+function newGame() {
+    guestNum = 0
+    homeNum = 0
+    homeEl.textContent = 0
+    guestEl.textContent = 0
     highlightScore(homeEl, guestEl)
 }
